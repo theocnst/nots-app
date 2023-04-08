@@ -1,0 +1,18 @@
+<mat-card class="announcement-card" *ngIf="displayAnnouncement">
+  <app-edit-announcement class="edit-announcement-component" [announcement]="announcement" *ngIf="displayEditForm"
+    (isShowingEditForm)="receiveHideEditForm($event)">
+  </app-edit-announcement>
+  <mat-card-title class="announcement-card-title">{{ announcement.title }}</mat-card-title>
+  <mat-card-content class="announcement-card-content">
+    <p class="author">{{ announcement.author | author }}</p>
+    <p class="message">{{ announcement.message }}</p>
+    <img class="announcement-image" src="{{ announcement.imageUrl }}" alt="image">
+  </mat-card-content>
+
+  <button class="edit-button" mat-mini-fab color="accent" (click)="toggleDisplayEditForm()">
+    <mat-icon>edit</mat-icon>
+  </button>
+  <button class="delete-button" mat-mini-fab color="accent" (click)="deleteAnnouncement(announcement)">
+    <mat-icon>delete</mat-icon>
+  </button>
+</mat-card>

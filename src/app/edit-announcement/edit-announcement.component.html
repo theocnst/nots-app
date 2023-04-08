@@ -1,0 +1,38 @@
+<form class="edit-form">
+    <mat-form-field class="mat-field">
+        <mat-label>Title</mat-label>
+        <input matInput [(ngModel)]="announcement.title" [ngModelOptions]="{standalone: true}" required>
+    </mat-form-field>
+
+    <mat-form-field class="mat-field">
+        <mat-label>Author</mat-label>
+        <input matInput [(ngModel)]="announcement.author" [ngModelOptions]="{standalone: true}" required>
+    </mat-form-field>
+
+    <mat-form-field class="mat-field">
+        <mat-label>Message</mat-label>
+        <textarea matInput [(ngModel)]="announcement.message" [ngModelOptions]="{standalone: true}"
+            class="limited-textarea"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="mat-field">
+        <mat-label>Image URL</mat-label>
+        <input matInput [(ngModel)]="announcement.imageUrl" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+
+    <mat-form-field class="mat-field">
+        <mat-label>Categories</mat-label>
+        <mat-select [(value)]="announcement.category" required>
+            <mat-option *ngFor="let categories of listOfCategories" [value]="categories.name" required>
+                {{ categories.name }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</form>
+<button class="check-button" mat-mini-fab color="accent" (click)="editAnnouncement(announcement)">
+    <mat-icon>check</mat-icon>
+</button>
+
+<button class="close-button" mat-mini-fab color="accent" (click)="hideEditForm()">
+    <mat-icon>close</mat-icon>
+</button>

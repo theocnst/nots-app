@@ -1,0 +1,17 @@
+<body>
+  <div class="gradient-background">
+
+    <div class="top-buttons">
+      <app-categories class="category-buttons" (selectCategoryEmitter)="filterAnnouncements($event)"></app-categories>
+
+      <button mat-button class="add-post-button" color="#561eb7" routerLink="/add">Add New Post</button>
+    </div>
+
+    <div class="announcements-container">
+      <app-announcement class="announcement-component" *ngFor="let announcement of filteredAnnouncements"
+        [announcement]="announcement">
+      </app-announcement>
+    </div>
+
+  </div>
+</body>

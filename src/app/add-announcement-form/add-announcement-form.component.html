@@ -1,0 +1,37 @@
+<div class="form-and-buttons-container gradient-background">
+  <form class="add-form">
+    <mat-form-field class="mat-field">
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="newAnnouncement.title" [ngModelOptions]="{standalone: true}" required>
+    </mat-form-field>
+
+    <mat-form-field class="mat-field">
+      <mat-label>Author</mat-label>
+      <input matInput [(ngModel)]="newAnnouncement.author" [ngModelOptions]="{standalone: true}" required>
+    </mat-form-field>
+
+    <mat-form-field class="mat-field">
+      <mat-label>Message</mat-label>
+      <textarea matInput [(ngModel)]="newAnnouncement.message" [ngModelOptions]="{standalone: true}"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="mat-field">
+      <mat-label>Image URL</mat-label>
+      <input matInput [(ngModel)]="newAnnouncement.imageUrl" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+
+    <mat-form-field class="mat-field">
+      <mat-label>Categories</mat-label>
+      <mat-select [(value)]="newAnnouncement.category" required>
+        <mat-option *ngFor="let categories of listOfCategories" [value]="categories.name" required>
+          {{ categories.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <div class="buttons">
+    <button mat-button color="#561eb7" (click)="addAnnouncement()" routerLink="/home">Add Announcement</button>
+    <button mat-button color="#561eb7" routerLink="/home">Go Home</button>
+  </div>
+</div>

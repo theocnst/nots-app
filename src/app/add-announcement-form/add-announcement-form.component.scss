@@ -1,0 +1,45 @@
+html,
+body {
+  margin: 0;
+}
+
+.gradient-background {
+  min-height: 100%;
+  color: #561eb7;
+  background-color: rgb(160, 160, 255);
+  background-image: linear-gradient(to bottom right, rgb(160, 160, 255), rgb(255, 160, 230));
+}
+
+.form-and-buttons-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-form {
+  width: 50%;
+  max-width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border: 3px solid rgb(162, 0, 255);
+  background-color: rgb(245, 245, 245);
+  border-radius: 10px;
+  margin: 10px;
+  font-size: 5px;
+}
+
+.mat-field {
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+button:hover {
+  background-color: rgba(255, 0, 217, 0.45);
+}

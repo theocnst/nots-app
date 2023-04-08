@@ -1,0 +1,46 @@
+html,
+body {
+  margin: 0;
+}
+
+.gradient-background {
+  min-height: 100%;
+  color: #561eb7;
+  background-color: rgb(160, 160, 255);
+  background-image: linear-gradient(to bottom right, rgb(160, 160, 255), rgb(255, 160, 230));
+}
+
+.top-buttons {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+
+}
+
+button:hover {
+  background-color: rgba(255, 0, 217, 0.45);
+}
+
+.category-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+
+  button:hover {
+    background-color: #ff76fac7;
+  }
+}
+
+.announcement-component {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}

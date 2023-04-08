@@ -1,0 +1,7 @@
+<div class="category-buttons" *ngFor="let currentCategory of listOfCategories">
+  <button mat-button color="#561eb7" (click)="selectCategory(currentCategory)">
+    Category {{ currentCategory.name }}
+  </button>
+</div>
+
+<button class="show-all-button" mat-button color="#561eb7" (click)="resetFilter()">Show All</button>
