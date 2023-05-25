@@ -17,7 +17,7 @@ export class EditAnnouncementComponent {
     title: '',
     message: '',
     author: '',
-    category: '',
+    categoryId: '',
     imageUrl: '',
     id: '',
   };

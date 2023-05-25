@@ -11,11 +11,13 @@ import { AnnouncementService } from '../services/announcement.service';
 })
 export class AddAnnouncementFormComponent {
 
+  exitBool: boolean = false;
+
   newAnnouncement: Announcement = {
     title: '',
     message: '',
     author: '',
-    category: '',
+    categoryId: '',
     imageUrl: '',
     id: '',
   };
@@ -35,10 +37,13 @@ export class AddAnnouncementFormComponent {
   addAnnouncement() {
     this.announcementService.addAnnouncement(this.newAnnouncement);
     console.log("Announcement added");
+    this.exitBool = true;
   }
 
   canExit() {
-    if (this.newAnnouncement.title || this.newAnnouncement.message || this.newAnnouncement.author || this.newAnnouncement.category || this.newAnnouncement.imageUrl) {
+    if (this.exitBool) return true;
+
+    if (this.newAnnouncement.title || this.newAnnouncement.message || this.newAnnouncement.author || this.newAnnouncement.categoryId || this.newAnnouncement.imageUrl) {
       return confirm('You have unsaved changes. Are you sure you want to leave?');
     }
     else return true;

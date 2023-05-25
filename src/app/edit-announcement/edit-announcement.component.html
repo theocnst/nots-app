@@ -22,7 +22,7 @@
 
     <mat-form-field class="mat-field">
         <mat-label>Categories</mat-label>
-        <mat-select [(value)]="announcement.category" required>
+        <mat-select [(value)]="announcement.categoryId" required>
             <mat-option *ngFor="let categories of listOfCategories" [value]="categories.name" required>
                 {{ categories.name }}
             </mat-option>

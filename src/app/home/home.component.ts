@@ -23,7 +23,7 @@ export class HomeComponent {
       return;
     }
     this.filteredAnnouncements = this.announcementsFromApp.filter(
-      (announcement) => announcement.category == selectedCategory.name
+      (announcement) => announcement.categoryId == selectedCategory.name
     );
     //sau this.announcementsFromApp.filter(announcement=>announcement.categoryObject.id==selectedCategory.id);
   }
