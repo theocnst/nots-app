@@ -11,7 +11,7 @@ import { AnnouncementService } from '../services/announcement.service';
 export class HomeComponent {
   title = 'notifications-app';
 
-  announcementsFromApp: Announcement[];
+  announcementsFromService: Announcement[];
 
   filteredAnnouncements: Announcement[];
 
@@ -19,13 +19,13 @@ export class HomeComponent {
   filterAnnouncements(selectedCategory: Category) {
     //we filter the announcementsFromApp based on the selectedCategory.id
     if (selectedCategory == undefined) {
-      this.filteredAnnouncements = this.announcementsFromApp;
+      this.filteredAnnouncements = this.announcementsFromService;
       return;
     }
-    this.filteredAnnouncements = this.announcementsFromApp.filter(
+    this.filteredAnnouncements = this.announcementsFromService.filter(
       (announcement) => announcement.categoryId == selectedCategory.name
     );
-    //sau this.announcementsFromApp.filter(announcement=>announcement.categoryObject.id==selectedCategory.id);
+    //sau this.announcementsFromService.filter(announcement=>announcement.categoryObject.id==selectedCategory.id);
   }
 
   constructor(private announcementService: AnnouncementService) {
@@ -35,7 +35,7 @@ export class HomeComponent {
   ngOnInit() {
     //subscribe to the observable
     this.announcementService.getAnnouncements().subscribe((announcements) => {
-      this.announcementsFromApp = announcements;
+      this.announcementsFromService = announcements;
       console.log(announcements);
     });
   }
