@@ -5,7 +5,7 @@
   <mat-card-title class="announcement-card-title">{{ announcement.title }}</mat-card-title>
   <mat-card-content class="announcement-card-content">
     <p class="author">{{ announcement.author | author }}</p>
-    <p class="message">{{ announcement.message }}</p>
+    <pre class="message">{{ announcement.message }}</pre>
     <img class="announcement-image" src="{{ announcement.imageUrl }}" alt="image">
   </mat-card-content>
 

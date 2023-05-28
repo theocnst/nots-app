@@ -9,10 +9,31 @@ import { Category } from '../other/category';
 })
 export class AnnouncementService {
 
-  constructor(private httpClient: HttpClient) { }
+  readonly permanentAnnouncement: Announcement = {
+    title: 'Permanent Example',
+    message: `! This announcement will always be present. !
 
-  // announcementsURL = "https://newsapi20221108120432.azurewebsites.net/api/Announcements";
-  // categorieisURL = "https://newsapi20221108120432.azurewebsites.net/api/Categories";
+    • On this website you can add, edit and delete announcements.
+    • You can also filter them by category.
+    • The announcements are stored in the local storage of your browser.
+    • If you want to reset the announcements, you can clear the local storage.`,
+    author: 'Admin',
+    categoryId: '0',
+    imageUrl: 'https://cdn-icons-png.flaticon.com/512/2942/2942813.png',
+    id: '0',
+  };
+
+  constructor(private httpClient: HttpClient) {
+    const storedAnnouncements = localStorage.getItem('announcements');
+    if (storedAnnouncements) {
+      this.announcementsFromService = JSON.parse(storedAnnouncements);
+    }
+    // If the permanent announcement is not present, add it
+    if (!this.announcementsFromService.find(announcement => announcement.id === this.permanentAnnouncement.id)) {
+      this.announcementsFromService.unshift(this.permanentAnnouncement);
+    }
+  }
+
 
   readonly httpOptions = {
     headers: new HttpHeaders({
@@ -21,6 +42,7 @@ export class AnnouncementService {
   };
 
   announcementsFromService: Announcement[] = [
+    this.permanentAnnouncement,
     {
       title: 'Course Example',
       message: 'The course is postponed until next week',
@@ -67,21 +89,27 @@ export class AnnouncementService {
   addAnnouncement(newAnnouncement: Announcement) {
     newAnnouncement.id = (Math.max(...this.announcementsFromService.map(a => Number(a.id))) + 1).toString();
     this.announcementsFromService.push(newAnnouncement);
+    localStorage.setItem('announcements', JSON.stringify(this.announcementsFromService));
     console.log(newAnnouncement)
   }
 
-
   editAnnouncement(editedAnnouncement) {
     this.announcementsFromService = this.announcementsFromService.map(announcement => announcement.id == editedAnnouncement.id ? editedAnnouncement : announcement);
+    localStorage.setItem('announcements', JSON.stringify(this.announcementsFromService));
     console.log(editedAnnouncement)
   }
 
   deleteAnnouncement(deletedAnnouncement) {
-    this.announcementsFromService = this.announcementsFromService.filter(announcement => announcement.id != deletedAnnouncement.id);
-    console.log(deletedAnnouncement)
+    this.announcementsFromService = this.announcementsFromService.filter(announcement => announcement.id !== deletedAnnouncement.id);
+    localStorage.setItem('announcements', JSON.stringify(this.announcementsFromService));
   }
 
+
   //API
+
+  // announcementsURL = "https://newsapi20221108120432.azurewebsites.net/api/Announcements";
+  // categorieisURL = "https://newsapi20221108120432.azurewebsites.net/api/Categories";
+
   // getListOfCategories(): Observable<Category[]> {
   //   return this.httpClient.get<Category[]>(this.categorieisURL, this.httpOptions);
   // }
